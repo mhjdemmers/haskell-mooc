@@ -1,8 +1,10 @@
-import Text.XHtml (base)
--- fibonacci number, fast version
-fibonacci :: Integer -> Integer
-fibonacci n = fibonacci' 0 1 n
-
-fibonacci' :: Integer -> Integer -> Integer -> Integer
-fibonacci' a b 1 = b
-fibonacci' a b n = fibonacci' b (a + b) (n - 1)
+guessAge :: String -> Int -> String
+guessAge "Griselda" age
+    | age < 47 = "Too low!"
+    | age > 47 = "Too high!"
+    | otherwise = "Correct!"
+guessAge "Hansel" age
+    | age < 12 = "Too low!"
+    | age > 12 = "Too high!"
+    | otherwise = "Correct!"
+guessAge name age = "Wrong name!"
