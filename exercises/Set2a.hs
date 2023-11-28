@@ -16,6 +16,7 @@ import Mooc.Todo
 
 -- Some imports you'll need. Don't add other imports :)
 import Data.List
+import Text.XHtml (base)
 
 ------------------------------------------------------------------------------
 -- Ex 1: Define the constant years, that is a list of the values 1982,
@@ -170,4 +171,6 @@ eitherDiv x y = if y == 0
 --   addEithers (Left "boom") (Left "fail") ==> Left "boom"
 
 addEithers :: Either String Int -> Either String Int -> Either String Int
-addEithers a b = todo
+addEithers (Right a) (Right b) = Right (a + b)
+addEithers (Left a) _ = Left a
+addEithers (Right a) (Left b) = Left b 
