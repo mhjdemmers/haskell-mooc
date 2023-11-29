@@ -64,7 +64,11 @@ oddFactorial x = if odd x
 -- * https://en.wikipedia.org/wiki/Euclidean_algorithm
 
 myGcd :: Integer -> Integer -> Integer
-myGcd = todo
+myGcd a 0 = a
+myGcd 0 b = b
+myGcd a b = if a > b
+            then myGcd (a - b) b
+            else myGcd a (b - a)
 
 ------------------------------------------------------------------------------
 -- Ex 4: Implement the function leftpad which adds space characters
@@ -80,7 +84,9 @@ myGcd = todo
 -- * you can compute the length of a string with the length function
 
 leftpad :: String -> Int -> String
-leftpad = todo
+leftpad s i = if length s >= i
+              then s
+              else leftpad (" " ++ s) i
 
 ------------------------------------------------------------------------------
 -- Ex 5: let's make a countdown for a rocket! Given a number, you
