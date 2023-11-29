@@ -16,7 +16,9 @@ import Data.List
 -- Hint! pattern matching is your friend.
 
 binomial :: Integer -> Integer -> Integer
-binomial = todo
+binomial _ 0 = 1
+binomial 0 _ = 0
+binomial n k = binomial (n - 1) k + binomial (n - 1) (k - 1)
 
 ------------------------------------------------------------------------------
 -- Ex 2: implement the odd factorial function. Odd factorial is like
@@ -27,7 +29,10 @@ binomial = todo
 --   oddFactorial 6 ==> 5*3*1 ==> 15
 
 oddFactorial :: Integer -> Integer
-oddFactorial = todo
+oddFactorial 1 = 1
+oddFactorial x = if odd x
+                 then x * oddFactorial (x - 1)
+                 else oddFactorial (x - 1)
 
 ------------------------------------------------------------------------------
 -- Ex 3: implement the Euclidean Algorithm for finding the greatest
