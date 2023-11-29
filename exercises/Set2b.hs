@@ -102,7 +102,9 @@ leftpad s i = if length s >= i
 -- * you'll probably need a recursive helper function
 
 countdown :: Integer -> String
-countdown = todo
+countdown i = "Ready! " ++ helper i ++ "Liftoff!"
+helper 1 = show 1 ++ "... "
+helper i = show i ++ "... " ++ helper (i - 1)
 
 ------------------------------------------------------------------------------
 -- Ex 6: implement the function smallestDivisor that returns the
