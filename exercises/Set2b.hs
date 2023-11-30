@@ -122,7 +122,12 @@ helper i = show i ++ "... " ++ helper (i - 1)
 -- Hint: remember the mod function!
 
 smallestDivisor :: Integer -> Integer
-smallestDivisor = todo
+smallestDivisor n = findDivisor n 2
+
+findDivisor :: Integer -> Integer -> Integer
+findDivisor n testDiv
+  | mod n testDiv == 0 = testDiv
+  | otherwise          = findDivisor n (testDiv +1)
 
 ------------------------------------------------------------------------------
 -- Ex 7: implement a function isPrime that checks if the given number
