@@ -86,9 +86,16 @@ startsWithZero (0:xs) = True
 startsWithZero (x:xs) = False
 startsWithZero [] = False
 
+-- Not tail recursive!
+-- sumNumbers :: [Int] -> Int
+-- sumNumbers [] = 0 
+-- sumNumbers (x:xs) = x + sumNumbers xs
+
+-- Tail recursive version
 sumNumbers :: [Int] -> Int
-sumNumbers [] = 0 
-sumNumbers (x:xs) = x + sumNumbers xs
+sumNumbers xs = go 0 xs
+  where go sum [] = sum
+        go sum (x:xs) = go (sum+x) xs
 
 myMaximum :: [Int] -> Int
 myMaximum [] = 0
@@ -101,16 +108,22 @@ countNothings [] = 0
 countNothings (Nothing : xs) = 1 + countNothings xs
 countNothings (Just _ : xs) = countNothings xs
 
-doableList :: [Int] -> [Int]
-doubleList [] = []
-doubleList (x:xs) = 2*x : doubleList xs
+-- Not tail recursive!
+-- doableList :: [Int] -> [Int]
+-- doubleList [] = []
+-- doubleList (x:xs) = 2*x : doubleList xs
 
-sumNumbers :: [Int] -> Int
-sumNumbers xs = go 0 xs
-  where go sum [] = sum
-        go sum (x:xs) = go (sum+x) xs
-
+-- Tail recursive version
 doubleList :: [Int] -> [Int]
 doubleList xs = go [] xs
   where go result [] = result
         go result (x:xs) = go (result++[2*x]) xs
+
+(<+>) :: [Int] -> [Int] -> [Int]
+xs <+> ys = zipWith (+) xs ys
+
+(+++) :: String -> String -> String
+a +++ b = a ++ " " ++ b
+
+keepElements :: [a] -> [Bool] -> [a]
+keepElements xs bs = map fst (filter snd (zip xs bs))
