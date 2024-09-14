@@ -42,3 +42,9 @@ step k x = if x<k then Right (2*x) else Left x
 bomb :: Int -> Either String Int
 bomb 0 = Left "BOOM"
 bomb x = Right (x-1) 
+
+
+(+|+) :: [a] -> [a] -> [a]
+a +|+ [] = [head a]
+[] +|+ b = [head b]
+a +|+ b = [head a, head b]

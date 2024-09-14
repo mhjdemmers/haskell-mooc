@@ -193,7 +193,7 @@ bomb x = Right (x-1)
 -- Hint! This is a great use for list comprehensions
 
 joinToLength :: Int -> [String] -> [String]
-joinToLength = todo
+joinToLength len strs = [s1 ++ s2 | s1 <- strs, s2 <- strs, length (s1++s2) == len]
 
 ------------------------------------------------------------------------------
 -- Ex 10: implement the operator +|+ that returns a list with the first
@@ -207,7 +207,10 @@ joinToLength = todo
 --   [] +|+ [True]        ==> [True]
 --   [] +|+ []            ==> []
 
-
+(+|+) :: [a] -> [a] -> [a]
+a +|+ [] = [head a]
+[] +|+ b = [head b]
+a +|+ b = [head a, head b]
 ------------------------------------------------------------------------------
 -- Ex 11: remember the lectureParticipants example from Lecture 2? We
 -- used a value of type [Either String Int] to store some measurements
